@@ -30,14 +30,26 @@ def add_contact(args, book: AddressBook):
 
 
 @input_error
+def delete_contact(args, book: AddressBook):
+    if len(args) < 1:
+        return "Not enough arguments. Usage: delete <name>"
+    name = args[0]
+    book.delete(name)
+    return f"Contact {name} deleted."
+
+
+@input_error
 def change_contact(args, book):
-    name, old_phone, new_phone, *_ = args
-    record = book.find(name)
-    if record:
-        record.edit_phone(old_phone, new_phone)
-        return "Contact updated."
-    else:
-        raise KeyError
+    try:
+        name, old_phone, new_phone, *_ = args
+        record = book.find(name)
+        if record:
+            record.edit_phone(old_phone, new_phone)
+            return "Contact updated."
+        else:
+            raise KeyError
+    except KeyError:
+        raise KeyError("Contact not found.")
 
 
 @input_error

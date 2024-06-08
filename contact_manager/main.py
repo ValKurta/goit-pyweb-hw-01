@@ -4,6 +4,7 @@ from view import ConsoleView
 from utils import parse_input, load_data, file_path
 from commands import (
     add_contact,
+    delete_contact,
     change_contact,
     show_phone,
     show_all,
@@ -29,6 +30,8 @@ def main():
             view.display_message("How can I help you?")
         elif command == "add":
             view.display_message(add_contact(args, book))
+        elif command == "delete":
+            view.display_message(delete_contact(args, book))
         elif command == "change":
             view.display_message(change_contact(args, book))
         elif command == "phone":

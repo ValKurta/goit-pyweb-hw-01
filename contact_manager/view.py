@@ -28,7 +28,13 @@ class ConsoleView(View):
         print(message)
 
     def display_contacts(self, contacts: str):
-        print(contacts)
+        print(f"Contact list:\n{book}")
+
+    def display_contacts(self, contacts: str):
+        if not contacts:
+            print("Contact list is empty!")
+        else:
+            print(f"Contact list:\n{contacts}")
 
     def display_birthdays(self, birthdays: list):
         if not birthdays:
